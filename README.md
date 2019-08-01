@@ -28,7 +28,7 @@ The folder k8s-specifications contains the yaml specifications of the Voting App
 
 Run the following command to create the deployments and services objects:
 ```
-$ kubectl create -f k8s-specifications/
+$ kubectl create -f k8s-specifications/ 
 deployment "db" created
 service "db" created
 deployment "redis" created
