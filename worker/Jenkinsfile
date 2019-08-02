@@ -17,14 +17,20 @@ tools {
 }
     stage("test") {
             steps {
-            echo 'Testing worker'
+            echo 'Testing worker app'
+	    dir ('worker') {
+	    sh 'mvn clean test'
+}
         }
     }
     stage("three") {
             steps {
-            echo 'Welcome to hell World'
+            echo 'Packaging worker app'
+  	    dir ('worker') {
+	    sh 'mvn package -D skipTests'
         }
     }
+}
 }
 post {
     always {
