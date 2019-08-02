@@ -1,5 +1,5 @@
 #!/bin/bash 
-
+#Just another comment
 cd e2e 
 
 docker-compose down > /dev/null 2>&1 
