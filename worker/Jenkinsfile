@@ -34,8 +34,7 @@ tools {
 }
 post {
     always {
-        echo 'this is a post action'
-    }
+    archiveArtifacts '**/worker/target/*.jar'}
 }
 }
 
