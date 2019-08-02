@@ -38,13 +38,10 @@ branch "master"
             echo 'Packaging worker app'
   	    dir ('worker') {
 	    sh 'mvn package -D skipTests'
+	    archiveArtifacts '**/worker/target/*.jar'
         }
     }
 }
-}
-post {
-    always {
-    archiveArtifacts '**/worker/target/*.jar'}
 }
 }
 
