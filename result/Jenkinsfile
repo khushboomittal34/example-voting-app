@@ -4,7 +4,7 @@ agent any
 
 tools {
 
- NodeJS "NodeJS 8.9.0"
+ nodejs "NodeJS 8.9.0"
 }
     stages {
         stage("build") {
