@@ -1,0 +1,47 @@
+pipeline {
+
+agent any
+
+tools {
+
+ maven "Maven 3.6.1"
+}
+    stages {
+        stage("build") {
+when{
+          changeset "**/worker/**"
+        }
+            steps {
+            echo 'Building worker app'
+	    dir ('worker') {
+	    sh 'mvn compile'
+        }
+    }
+}
+    stage("test") {
+when{
+          changeset "**/worker/**"
+        }
+            steps {
+            echo 'Testing worker app'
+	    dir ('worker') {
+	    sh 'mvn clean test'
+}
+        }
+    }
+    stage("package") {
+when{
+branch "master"         
+ changeset "**/worker/**"
+        }
+            steps {
+            echo 'Packaging worker app'
+  	    dir ('worker') {
+	    sh 'mvn package -D skipTests'
+	    archiveArtifacts '**/worker/target/*.jar'
+        }
+    }
+}
+}
+}
+
